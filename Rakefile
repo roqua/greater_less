@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "greater_less"
   gem.homepage = "http://github.com/esposito/greater_less"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Gem for handling floating point half-open intervals}
+  gem.description = %Q{The GreaterLess Gem allows for making comparisons between floats and half-open intervals and apply simple arithmetics to the intervals preserving their mathematical meaning.}
   gem.email = "s.esposito@roqua.nl"
   gem.authors = ["Samuel Esposito"]
   # dependencies defined in Gemfile
