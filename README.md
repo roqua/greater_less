@@ -10,7 +10,7 @@ halfopen intervals, but transparently behave as Floats.
 To install, type
 
 ```bash
- sudo gem install greater_less
+sudo gem install greater_less
 ```
 
 If you are using bundler, add `greater_less` to your gemfile
