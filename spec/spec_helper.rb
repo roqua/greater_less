@@ -1,4 +1,8 @@
 require 'rubygems'
+if ENV['COVERAGE']
+  require 'simplecov'
+  SimpleCov.start
+end
 
 # --- Instructions ---
 # - Sort through your spec_helper file. Place as much environment loading

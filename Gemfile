@@ -13,3 +13,5 @@ group :development, :test do
   gem 'jeweler'
   gem "spork"
 end
+
+gem 'simplecov', :require => false, :group => :test
