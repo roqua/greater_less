@@ -1,24 +1,28 @@
 # The GreaterLess class can be used to generate objects that represent
 # halfopen intervals, but transparently behave as Floats. One easy way to
-# integrate this class into your project is by redifining the +#to_f+
-# method of the String class as follows:
+# integrate this class into your project is by requiring the greater_less
+# string extension as follows:
+#
+#  require 'greater_less/string_extension'
+#
+# This extension redifines the +#to_f+ method of the String class as follows:
 #
 #  class String
-#    alias :old_to_f :to_f
+#    alias :to_f_without_greater_less :to_f
 #
 #    def to_f
 #      if self =~ GreaterLess::GREATER_LESS
 #        return GreaterLess.new(self)
 #      end
-#      self.old_to_f
+#      self.to_f_without_greater_less
 #    end
 #  end
 #
-# When a string starts with a greater or less sign (like for instance
+# Now when a string starts with a greater or less sign (like for instance
 # <tt>"> 3.45"</tt>), the +#to_f+ method converts it to a GreaterLess object
 # instead of the value +0.0+.
 #
-# With all this in place one can simply convert strings like the one
+# With this extension in place one can simply convert strings like the one
 # above to a float like object and compare it to floats as if it were a
 # float itself. For instance one can do the following:
 #
