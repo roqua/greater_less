@@ -1,5 +1,5 @@
 # The GreaterLess class can be used to generate objects that represent
-# halfopen intervals, but transparently behave as Floats. One easy way to
+# halfopen intervals, but transparently behave as ruby Floats. One easy way to
 # integrate this class into your project is by requiring the GreaterLess
 # string extension as follows:
 #
@@ -116,9 +116,9 @@ class GreaterLess
       elsif content =~ /^</
         @sign = "<"
       end
-      @Float = content.gsub(/^[<>] ?/, "").to_f
+      @float = content.gsub(/^[<>] ?/, "").to_f
     elsif content.is_a? Numeric
-      @Float = content.to_f
+      @float = content.to_f
     else
       raise "Can't handle #{content.class}!"
     end
@@ -146,13 +146,13 @@ class GreaterLess
   end
 
   def value
-    @Float
+    @float
   end
 
   #:doc:
   def ==(numerical)
     if numerical.is_a? self.class
-      @sign == numerical.sign and @Float == numerical.value
+      @sign == numerical.sign and @float == numerical.value
     else
       false
     end
@@ -160,9 +160,9 @@ class GreaterLess
 
   def >(numerical)
     if numerical.is_a? self.class
-      @Float >= numerical.value and [nil, ">"].include? @sign and [nil, "<"].include? numerical.sign
+      @float >= numerical.value and [nil, ">"].include? @sign and [nil, "<"].include? numerical.sign
     else
-      @Float >= numerical and @sign == ">"
+      @float >= numerical and @sign == ">"
     end
   end
 
@@ -185,9 +185,9 @@ class GreaterLess
   def *(numerical)
     value, sign = if numerical.is_a? self.class
       raise "Can't handle #{self.class}!" if @sign
-      [@Float * numerical.value, @Float > 0 ? numerical.sign : numerical.inverted_sign]
+      [@float * numerical.value, @float > 0 ? numerical.sign : numerical.inverted_sign]
     else
-      [@Float * numerical, numerical > 0 ? @sign : inverted_sign]
+      [@float * numerical, numerical > 0 ? @sign : inverted_sign]
     end
     GreaterLess.new("#{sign} #{value}")
   end
@@ -195,9 +195,9 @@ class GreaterLess
   def /(numerical)
     value, sign = if numerical.is_a? self.class
       raise "Can't handle #{self.class}!" if @sign
-      [@Float / numerical.value, @Float > 0 ? numerical.inverted_sign : numerical.sign]
+      [@float / numerical.value, @float > 0 ? numerical.inverted_sign : numerical.sign]
     else
-      [@Float / numerical, numerical > 0 ? @sign : inverted_sign]
+      [@float / numerical, numerical > 0 ? @sign : inverted_sign]
     end
     GreaterLess.new("#{sign} #{value}")
   end
@@ -205,9 +205,9 @@ class GreaterLess
   def +(numerical)
     value, sign = if numerical.is_a? self.class
       raise "Can't handle #{self.class}!" if @sign
-      [@Float + numerical.value, numerical.sign]
+      [@float + numerical.value, numerical.sign]
     else
-      [@Float + numerical, @sign]
+      [@float + numerical, @sign]
     end
     GreaterLess.new("#{sign} #{value}")
   end
@@ -226,7 +226,7 @@ class GreaterLess
   end
 
   def to_s
-    "#{@sign} #{@Float}"
+    "#{@sign} #{@float}"
   end
 
   def inspect
@@ -237,11 +237,11 @@ class GreaterLess
     if klass == self.class
       true
     else
-      @Float.is_a? klass
+      @float.is_a? klass
     end
   end
 
   def method_missing(*args)
-    @Float.send(*args)
+    @float.send(*args)
   end
 end
