@@ -2,103 +2,113 @@ require 'spec_helper'
 
 describe GreaterLess do
 
-  context "when the object has a greater than sign" do
-    subject { GreaterLess.new("> 4.5") }
+  context "when the object is initialized with a string" do
+    context "and the string starts with a greater than sign" do
+      subject { GreaterLess.new("> 4.5") }
 
-    it "should differ from its float value" do
-      (subject == 4.5).should be_false
-      (subject != 4.5).should be_true
-      (4.5 == subject).should be_false
-      (4.5 != subject).should be_true
+      it "should differ from its float value" do
+        (subject == 4.5).should be_false
+        (subject != 4.5).should be_true
+        (4.5 == subject).should be_false
+        (4.5 != subject).should be_true
+      end
+
+      it "should be greater than its float value" do
+        (subject >  4.5).should be_true
+        (subject >= 4.5).should be_true
+        (4.5 <  subject).should be_true
+        (4.5 <= subject).should be_true
+      end
+
+      it "should be greater than any value that is less than its float value" do
+        (subject >  4.49).should be_true
+        (subject >= 4.49).should be_true
+        (4.49 <  subject).should be_true
+        (4.49 <= subject).should be_true
+      end
+
+      it "should not be greater than a value greater than its float value" do
+        (subject >  4.51).should be_false
+        (subject >= 4.51).should be_false
+        (4.51 <  subject).should be_false
+        (4.51 <= subject).should be_false
+      end
+
+      it "should not be less than a value that is greater than its float value" do
+        (subject <  4.51).should be_false
+        (subject <= 4.51).should be_false
+        (4.51 >  subject).should be_false
+        (4.51 >= subject).should be_false
+      end
+
+      it "should be greater than a GreaterLess object that has a smaller or equal value and a less sign" do
+        (subject > GreaterLess.new("< 4.49")).should be_true
+        (subject > GreaterLess.new("< 4.5") ).should be_true
+      end
+
+      it "should not be greater than a GreaterLess object that has a bigger value or a greater sign" do
+        (subject > GreaterLess.new("< 4.51")).should be_false
+        (subject > GreaterLess.new("> 4.49")).should be_false
+      end
     end
 
-    it "should be greater than its float value" do
-      (subject >  4.5).should be_true
-      (subject >= 4.5).should be_true
-      (4.5 <  subject).should be_true
-      (4.5 <= subject).should be_true
+    context "and the string starts with a less than sign" do
+      subject { GreaterLess.new("<4.5") }
+
+      it "should differ from its float value" do
+        (subject == 4.5).should be_false
+        (subject != 4.5).should be_true
+        (4.5 == subject).should be_false
+        (4.5 != subject).should be_true
+      end
+
+      it "should be less than its float value" do
+        (subject <  4.5).should be_true
+        (subject <= 4.5).should be_true
+        (4.5 >  subject).should be_true
+        (4.5 >= subject).should be_true
+      end
+
+      it "should be less than any value that is greater than its float value" do
+        (subject <  4.51).should be_true
+        (subject <= 4.51).should be_true
+        (4.51 >  subject).should be_true
+        (4.51 >= subject).should be_true
+      end
+
+      it "should not be less than a value less than its float value" do
+        (subject <  4.49).should be_false
+        (subject <= 4.49).should be_false
+        (4.49 >  subject).should be_false
+        (4.49 >= subject).should be_false
+      end
+
+      it "should not be greater than a value that is less than its float value" do
+        (subject >  4.49).should be_false
+        (subject >= 4.49).should be_false
+        (4.49 <  subject).should be_false
+        (4.49 <= subject).should be_false
+      end
     end
 
-    it "should be greater than any value that is less than its float value" do
-      (subject >  4.49).should be_true
-      (subject >= 4.49).should be_true
-      (4.49 <  subject).should be_true
-      (4.49 <= subject).should be_true
-    end
+    context "and the string contains no sign" do
+      subject { GreaterLess.new("4.5") }
 
-    it "should not be greater than a value greater than its float value" do
-      (subject >  4.51).should be_false
-      (subject >= 4.51).should be_false
-      (4.51 <  subject).should be_false
-      (4.51 <= subject).should be_false
-    end
-
-    it "should not be less than a value that is greater than its float value" do
-      (subject <  4.51).should be_false
-      (subject <= 4.51).should be_false
-      (4.51 >  subject).should be_false
-      (4.51 >= subject).should be_false
-    end
-
-    it "should be greater than a GreaterLess object that has a smaller or equal value and a less sign" do
-      (subject > GreaterLess.new("< 4.49")).should be_true
-      (subject > GreaterLess.new("< 4.5") ).should be_true
-    end
-
-    it "should not be greater than a GreaterLess object that has a bigger value or a greater sign" do
-      (subject > GreaterLess.new("< 4.51")).should be_false
-      (subject > GreaterLess.new("> 4.49")).should be_false
+      it "should be a float" do
+        subject.class.should == Float
+      end
     end
   end
 
-  context "when the object has a less than sign" do
-    subject { GreaterLess.new("<4.5") }
-
-    it "should differ from its float value" do
-      (subject == 4.5).should be_false
-      (subject != 4.5).should be_true
-      (4.5 == subject).should be_false
-      (4.5 != subject).should be_true
-    end
-
-    it "should be less than its float value" do
-      (subject <  4.5).should be_true
-      (subject <= 4.5).should be_true
-      (4.5 >  subject).should be_true
-      (4.5 >= subject).should be_true
-    end
-
-    it "should be less than any value that is greater than its float value" do
-      (subject <  4.51).should be_true
-      (subject <= 4.51).should be_true
-      (4.51 >  subject).should be_true
-      (4.51 >= subject).should be_true
-    end
-
-    it "should not be less than a value less than its float value" do
-      (subject <  4.49).should be_false
-      (subject <= 4.49).should be_false
-      (4.49 >  subject).should be_false
-      (4.49 >= subject).should be_false
-    end
-
-    it "should not be greater than a value that is less than its float value" do
-      (subject >  4.49).should be_false
-      (subject >= 4.49).should be_false
-      (4.49 <  subject).should be_false
-      (4.49 <= subject).should be_false
+  describe ".initialize" do
+    context "when it receives something different from a string or a numeric" do
+      it "should raise an exception" do
+        expect { GreaterLess.new(Object.new, true) }.to raise_error
+      end
     end
   end
 
-  context "when the object receives no sign" do
-    subject { GreaterLess.new("4.5") }
-
-    it "should be a float" do
-      subject.class.should == Float
-    end
-  end
-
-  context "when the object receives a sign" do
+  context "when the object is initialized with a string containing a sign" do
     subject { GreaterLess.new(">4.5") }
 
     it "should be a float" do
@@ -107,6 +117,12 @@ describe GreaterLess do
 
     it "should equal itself" do
       (subject == subject).should be_true
+    end
+
+    describe "#coerce" do
+      it "should raise an exception if it is called on a GreaterLess object" do
+        expect { subject.coerce(GreaterLess.new("<2.45")) }.to raise_error
+      end
     end
 
     describe "#inverted_sign" do
@@ -251,6 +267,16 @@ describe GreaterLess do
     describe "#inspect" do
       it "should include this sign" do
         subject.inspect.should == "> 4.5"
+      end
+    end
+
+    describe "#is_a?" do
+      it "should acknowledge the GreaterLess class" do
+        subject.is_a?(GreaterLess).should be_true
+      end
+
+      it "should acknowledge the Float class" do
+        subject.is_a?(Float).should be_true
       end
     end
   end
