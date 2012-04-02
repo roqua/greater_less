@@ -28,7 +28,7 @@ string extension as follows:
 require 'greater_less/string_extension'
 ```
 
-This extension redifines the `#to_f` method of the String class as follows:
+This extension redifines the `#to_f` method of the String class:
 
 ```ruby
 class String

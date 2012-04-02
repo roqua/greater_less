@@ -5,7 +5,7 @@
 #
 #  require 'greater_less/string_extension'
 #
-# This extension redifines the +#to_f+ method of the String class as follows:
+# This extension redifines the +#to_f+ method of the String class:
 #
 #  class String
 #    alias :to_f_without_greater_less :to_f
