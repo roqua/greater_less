@@ -1,6 +1,6 @@
 # The GreaterLess class can be used to generate objects that represent
 # halfopen intervals, but transparently behave as Floats. One easy way to
-# integrate this class into your project is by requiring the greater_less
+# integrate this class into your project is by requiring the GreaterLess
 # string extension as follows:
 #
 #  require 'greater_less/string_extension'

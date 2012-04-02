@@ -21,7 +21,7 @@ gem 'greater_less'
 
 ## Getting Started
 
-One easy way to integrate this gem into your project is by requiring the greater_less
+One easy way to integrate this gem into your project is by requiring the GreaterLess
 string extension as follows:
 
 ```ruby
