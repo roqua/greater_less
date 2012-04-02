@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/esposito/greater_less.png)](http://travis-ci.org/esposito/greater_less)
 
 The GreaterLess gem can be used to generate objects that represent
-halfopen intervals, but transparently behave as ruby Floats.
+halfopen intervals, but transparently behave as Ruby Floats.
 
 ## Setup
 
