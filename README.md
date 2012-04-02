@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/esposito/greater_less.png)](http://travis-ci.org/esposito/greater_less)
 
 The GreaterLess gem can be used to generate objects that represent
-halfopen intervals, but transparently behave as Floats.
+halfopen intervals, but transparently behave as ruby Floats.
 
 ## Setup
 
@@ -55,8 +55,8 @@ value = GreaterLess.new("> 3.45")
 
 ## Usage
 
-A GreaterLess object can be compared to a float (or other numeric) as if it were a
-float itself. For instance one can do the following:
+A GreaterLess object can be compared to a Float (or other numeric) as if it were a
+Float itself. For instance one can do the following:
 
 ```ruby
 >> value = ">3.45".to_f
@@ -121,8 +121,8 @@ or using a GreaterLess object in the denominator is nicely dealt with:
 It makes no sense to apply the operators +, -, * or / on a pair of GreaterLess
 objects, so an exception is raised in these cases.
 
-All other methods are simply passed to the float value the GreaterLess
-object contains, so that it transparently acts like a float.
+All other methods are simply passed to the Float value the GreaterLess
+object contains, so that it transparently acts like a Float.
 
 ## Contributing to greater_less
  
