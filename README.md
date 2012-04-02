@@ -9,11 +9,13 @@ halfopen intervals, but transparently behave as Floats.
 
 To install, type
 
+```bash
  sudo gem install greater_less
+```
 
 If you are using bundler, add `greater_less` to your gemfile
 
-```bash
+```ruby
 gem 'greater_less'
 ```
 
@@ -67,7 +69,7 @@ float itself. For instance one can do the following:
 => false
 >> 2.45 >= value
 => false
->> value ## ">3.45".to_f
+>> value == ">3.45".to_f
 => true
 >> value != 2.45
 => true
