@@ -21,9 +21,12 @@
 # Now when a string starts with a greater or less sign (like for instance
 # <tt>"> 3.45"</tt>), the +#to_f+ method converts it to a GreaterLess object
 # instead of the value +0.0+.
-#
-# With this extension in place one can simply convert strings like the one
-# above to a float like object and compare it to floats as if it were a
+# 
+# Of course you can opt to create GreaterLess objects using +initialize+ directly like so:
+# 
+#  value = GreaterLess.new("> 3.45")
+# 
+# A GreaterLess object can be compared to a float (or other numeric) as if it were a
 # float itself. For instance one can do the following:
 #
 #  >> value = ">3.45".to_f
