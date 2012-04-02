@@ -44,7 +44,7 @@
 #  >> value != 2.45
 #  => true
 #
-# It is also possible to compare GreaterLess values with each other, so you
+# It is also possible to compare GreaterLess objects with each other, so you
 # do not have to worry about what kind of object you are dealing with in your
 # code:
 #
