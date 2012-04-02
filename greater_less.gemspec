@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.email = "s.esposito@roqua.nl"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
@@ -23,9 +23,10 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
+    "greater_less.gemspec",
     "lib/greater_less.rb",
     "lib/greater_less/string_extension.rb",
     "spec/greater_less_spec.rb",
