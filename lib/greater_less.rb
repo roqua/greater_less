@@ -22,7 +22,7 @@
 # <tt>"> 3.45"</tt>), the +#to_f+ method converts it to a GreaterLess object
 # instead of the value +0.0+.
 # 
-# Of course you can opt to create GreaterLess objects using +initialize+ directly like so:
+# Of course you can opt to create GreaterLess objects using +initialize+ directly, like so:
 # 
 #  value = GreaterLess.new("> 3.45")
 # 
