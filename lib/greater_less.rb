@@ -170,8 +170,8 @@ class GreaterLess
     numerical > self
   end
 
-  def !=(numerical)
-    not self == numerical
+  define_method("!=") do |numerical|
+    not (self == numerical)
   end
 
   def >=(numerical)
