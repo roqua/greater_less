@@ -81,8 +81,9 @@
 #  >> -1 / value
 #  => > -0.2898550724637681
 #
-# It makes no sense to apply the operators +, -, * or / on a pair of GreaterLess
-# objects, so an exception is raised in these cases.
+# In many cases it makes no sense to apply the operators +, -, * or / on 
+# a pair of GreaterLess objects, so when this happens an exception is 
+# raised for now.
 #
 # All other methods are simply passed to the Float value the GreaterLess
 # object contains, so that it transparently acts like a Float.
