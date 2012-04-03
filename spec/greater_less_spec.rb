@@ -169,7 +169,7 @@ describe GreaterLess do
 
       it "should carry out division on its float value" do
         (subject / 4).value.should == 4.5 / 4
-        (4 / subject).value.should == 4 / 4.5
+        (4 / subject).value.to_s.should == (4 / 4.5).to_s
       end
 
       it "should retain the object's sign when the denominator is a positive numeric" do
