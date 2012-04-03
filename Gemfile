@@ -6,12 +6,11 @@ source "http://rubygems.org"
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development, :test do
-  gem 'rspec'
-  gem 'shoulda'
   gem 'rdoc'
   gem 'bundler'
   gem 'jeweler'
-  gem "spork"
+  gem 'rspec'
+  gem 'shoulda-matchers'
+  gem "rcov", :platforms => :ruby_18
+  gem 'simplecov', :require => false, :platforms => :ruby_19
 end
-
-gem 'simplecov', :require => false, :group => :test

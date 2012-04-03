@@ -1,5 +1,5 @@
 require 'rubygems'
-if ENV['COVERAGE']
+if RUBY_VERSION =~ /^1\.9/ and ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start
 end
