@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "greater_less"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Samuel Esposito"]
-  s.date = "2012-04-02"
+  s.date = "2012-04-03"
   s.description = "The GreaterLess Gem allows for making comparisons between floats and half-open intervals and apply simple arithmetics to the intervals preserving their mathematical meaning."
   s.email = "s.esposito@roqua.nl"
   s.extra_rdoc_files = [
@@ -35,34 +35,34 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/esposito/greater_less"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.21"
+  s.rubygems_version = "1.8.15"
   s.summary = "Gem for handling floating point half-open intervals"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<spork>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<shoulda-matchers>, [">= 0"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
     else
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<spork>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<shoulda-matchers>, [">= 0"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<spork>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<shoulda-matchers>, [">= 0"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
   end
 end
 
