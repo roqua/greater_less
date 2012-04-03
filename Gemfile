@@ -11,6 +11,6 @@ group :development, :test do
   gem 'jeweler'
   gem 'rspec'
   gem 'shoulda-matchers'
-  gem "rcov", :platforms => :ruby_18
+  # gem "rcov", :platforms => :ruby_18
   gem 'simplecov', :require => false, :platforms => :ruby_19
 end

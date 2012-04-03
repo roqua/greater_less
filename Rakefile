@@ -38,11 +38,11 @@ if RUBY_VERSION =~ /^1\.9/
     ENV['COVERAGE'] = "true"
     Rake::Task['spec'].execute
   end
-else
-  RSpec::Core::RakeTask.new(:rcov) do |spec|
-    spec.pattern = 'spec/**/*_spec.rb'
-    spec.rcov = true
-  end
+# else
+  # RSpec::Core::RakeTask.new(:rcov) do |spec|
+  #   spec.pattern = 'spec/**/*_spec.rb'
+  #   spec.rcov = true
+  # end
 end
 
 task :default => :spec
