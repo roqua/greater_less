@@ -9,7 +9,7 @@ group :development, :test do
   gem 'rdoc'
   gem 'bundler'
   gem 'jeweler'
-  gem 'rspec'
+  gem 'rspec', '~> 3.4'
   gem 'shoulda-matchers'
   # gem "rcov", :platforms => :ruby_18
   gem 'simplecov', :require => false, :platforms => :ruby_19

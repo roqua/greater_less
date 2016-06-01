@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rdoc>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 3"])
       s.add_development_dependency(%q<shoulda-matchers>, [">= 0"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
     else

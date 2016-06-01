@@ -234,6 +234,10 @@ class GreaterLess
     self.to_s
   end
 
+  def kind_of?(klass)
+    is_a?(klass)
+  end
+
   def is_a?(klass)
     if klass == self.class
       true
