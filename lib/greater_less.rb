@@ -89,12 +89,7 @@
 # object contains, so that it transparently acts like a Float.
 #
 
-class GreaterLess
-  instance_methods.each do |meth|
-    # skipping undef of methods that "may cause serious problems"
-    undef_method(meth) if meth !~ /^(__|object_id|class)/
-  end
-
+class GreaterLess < Delegator
   GREATER_LESS = /^[<>] ?/
 
   #:nodoc:
@@ -123,6 +118,7 @@ class GreaterLess
     else
       raise "Can't handle #{content.class}!"
     end
+    super(@float)
   end
 
   def coerce(object)
@@ -131,6 +127,14 @@ class GreaterLess
     else
       raise "Can't handle #{object.class}!"
     end
+  end
+
+  # delegate any method not defined in this class to float
+  def __getobj__
+    @float
+  end
+  def __setobj__(obj)
+    @float = obj
   end
 
   def sign
@@ -185,31 +189,31 @@ class GreaterLess
 
   def *(numerical)
     value, sign = if numerical.is_a? self.class
-      raise "Can't handle #{self.class}!" if @sign
-      [@float * numerical.value, @float > 0 ? numerical.sign : numerical.inverted_sign]
-    else
-      [@float * numerical, numerical > 0 ? @sign : inverted_sign]
-    end
+                    raise "Can't handle #{self.class}!" if @sign
+                    [@float * numerical.value, @float > 0 ? numerical.sign : numerical.inverted_sign]
+                  else
+                    [@float * numerical, numerical > 0 ? @sign : inverted_sign]
+                  end
     GreaterLess.new("#{sign} #{value}")
   end
 
   def /(numerical)
     value, sign = if numerical.is_a? self.class
-      raise "Can't handle #{self.class}!" if @sign
-      [@float / numerical.value, @float > 0 ? numerical.inverted_sign : numerical.sign]
-    else
-      [@float / numerical, numerical > 0 ? @sign : inverted_sign]
-    end
+                    raise "Can't handle #{self.class}!" if @sign
+                    [@float / numerical.value, @float > 0 ? numerical.inverted_sign : numerical.sign]
+                  else
+                    [@float / numerical, numerical > 0 ? @sign : inverted_sign]
+                  end
     GreaterLess.new("#{sign} #{value}")
   end
 
   def +(numerical)
     value, sign = if numerical.is_a? self.class
-      raise "Can't handle #{self.class}!" if @sign
-      [@float + numerical.value, numerical.sign]
-    else
-      [@float + numerical, @sign]
-    end
+                    raise "Can't handle #{self.class}!" if @sign
+                    [@float + numerical.value, numerical.sign]
+                  else
+                    [@float + numerical, @sign]
+                  end
     GreaterLess.new("#{sign} #{value}")
   end
 
@@ -244,9 +248,5 @@ class GreaterLess
     else
       @float.is_a? klass
     end
-  end
-
-  def method_missing(*args)
-    @float.send(*args)
   end
 end

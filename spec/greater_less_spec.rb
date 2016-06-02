@@ -285,5 +285,28 @@ describe GreaterLess do
         expect(subject).to be_a(Float)
       end
     end
+
+    describe 'delegation' do
+      subject { GreaterLess.new('>4.5') }
+      it 'passes unknown methods on to the underlying float' do
+        # having methods like round and abs be handled on the original float is very error prone
+        # so we document this 'feature' here and warn people in the Readme
+        expect(subject.round).to eq 5
+      end
+
+      it 'preserves blocks' do
+        success = false
+        subject.tap do success = true end
+        expect(success).to eq true
+      end
+
+      it 'preserves blocks that also have arguments' do
+        success = []
+        subject.step(by: 0.5, to: 6) do |i|
+          success << true if i
+        end
+        expect(success).to eq [true, true, true, true]
+      end
+    end
   end
 end

@@ -123,8 +123,9 @@ In many cases it makes no sense to apply the operators +, -, * or / on
 a pair of GreaterLess objects, so when this happens an exception is 
 raised for now.
 
-All other methods are simply passed to the Float value the GreaterLess
-object contains, so that it transparently acts like a Float.
+All other methods are delegated to the Float value the GreaterLess
+object contains, so that it transparently acts like a Float. This means you should be careful when using methods like
+`abs` or `round` since they return the result from the underlying Float and bypass the GreaterLess behavior.
 
 ## Contributing to greater_less
  
@@ -138,6 +139,6 @@ object contains, so that it transparently acts like a Float.
 
 ## Copyright
 
-Copyright (c) 2012 Samuel Esposito. See LICENSE.txt for
+Copyright (c) 2016 Samuel Esposito, Jorn van de Beek. See LICENSE.txt for
 further details.
 

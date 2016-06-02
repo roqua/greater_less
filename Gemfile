@@ -13,4 +13,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   # gem "rcov", :platforms => :ruby_18
   gem 'simplecov', :require => false, :platforms => :ruby_19
+  gem 'pry'
 end
