@@ -88,6 +88,7 @@
 # All other methods are simply passed to the Float value the GreaterLess
 # object contains, so that it transparently acts like a Float.
 #
+require 'delegate'
 
 class GreaterLess < Delegator
   GREATER_LESS = /^[<>] ?/
