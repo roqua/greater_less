@@ -302,7 +302,7 @@ describe GreaterLess do
 
       it 'preserves blocks that also have arguments' do
         success = []
-        subject.step(:by => 0.5, :to => 6.0) do |i|
+        subject.step(7.5) do |i|
           success << true if i
         end
         expect(success).to eq [true, true, true, true]
