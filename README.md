@@ -1,7 +1,7 @@
 # GreaterLess
 
-[![Build Status](https://secure.travis-ci.org/esposito/greater_less.png)](http://travis-ci.org/esposito/greater_less)
-[![Dependency Status](https://gemnasium.com/esposito/greater_less.png)](https://gemnasium.com/esposito/greater_less)
+[![Build Status](https://travis-ci.org/roqua/greater_less.svg)](https://travis-ci.org/roqua/greater_less)
+[![Dependency Status](https://gemnasium.com/badges/github.com/roqua/greater_less.svg)](https://gemnasium.com/github.com/roqua/greater_less)
 
 The GreaterLess gem can be used to generate objects that represent
 halfopen intervals, but transparently behave as Ruby Floats.
