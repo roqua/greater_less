@@ -139,6 +139,4 @@ object contains, so that it transparently acts like a Float. This means you shou
 
 ## Copyright
 
-Copyright (c) 2016 Samuel Esposito, Jorn van de Beek. See LICENSE.txt for
-further details.
-
+Copyright (c) 2016 Samuel Esposito, Jorn van de Beek. See LICENSE.txt for further details.

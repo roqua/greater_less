@@ -250,4 +250,8 @@ class GreaterLess < Delegator
       @float.is_a? klass
     end
   end
+
+  def andand(*)
+    self
+  end
 end

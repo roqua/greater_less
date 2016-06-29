@@ -301,11 +301,17 @@ describe GreaterLess do
       end
 
       it 'preserves blocks that also have arguments' do
-        success = []
+        steps = []
         subject.step(7.5) do |i|
-          success << true if i
+          steps << i
         end
-        expect(success).to eq [true, true, true, true]
+        expect(steps).to eq [4.5, 5.5, 6.5, 7.5]
+      end
+
+      it 'does not break andand' do
+        expect(subject.andand).to be_a(GreaterLess)
+        expect(subject.andand).to eq(subject)
+        expect(subject.andand.to_s).to eq('> 4.5')
       end
     end
   end

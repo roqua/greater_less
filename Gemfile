@@ -14,4 +14,5 @@ group :development, :test do
   # gem "rcov", :platforms => :ruby_18
   gem 'simplecov', :require => false, :platforms => :ruby_19
   gem 'pry'
+  gem 'andand'
 end
