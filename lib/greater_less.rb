@@ -251,6 +251,7 @@ class GreaterLess < Delegator
     end
   end
 
+  # fixes delegator breaking andand functionality
   def andand(*)
     self
   end
