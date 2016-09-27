@@ -1,7 +1,7 @@
 # GreaterLess
 
-[![Build Status](https://secure.travis-ci.org/esposito/greater_less.png)](http://travis-ci.org/esposito/greater_less)
-[![Dependency Status](https://gemnasium.com/esposito/greater_less.png)](https://gemnasium.com/esposito/greater_less)
+[![Build Status](https://travis-ci.org/roqua/greater_less.svg)](https://travis-ci.org/roqua/greater_less)
+[![Dependency Status](https://gemnasium.com/badges/github.com/roqua/greater_less.svg)](https://gemnasium.com/github.com/roqua/greater_less)
 
 The GreaterLess gem can be used to generate objects that represent
 halfopen intervals, but transparently behave as Ruby Floats.
@@ -48,7 +48,7 @@ Now when a string starts with a greater or less sign (like for instance
 `"> 3.45"`), the `#to_f` method converts it to a GreaterLess object
 instead of the value `0.0`.
 
-Of course you can opt to create GreaterLess objects using `initialize` directly, like so:
+Alternatively you can opt to create GreaterLess objects using `initialize` directly, like so:
 
 ```ruby
 value = GreaterLess.new("> 3.45")
@@ -123,8 +123,9 @@ In many cases it makes no sense to apply the operators +, -, * or / on
 a pair of GreaterLess objects, so when this happens an exception is 
 raised for now.
 
-All other methods are simply passed to the Float value the GreaterLess
-object contains, so that it transparently acts like a Float.
+All other methods are delegated to the Float value the GreaterLess
+object contains, so that it transparently acts like a Float. This means you should be careful when using methods like
+`abs` or `round` since they return the result from the underlying Float and bypass the GreaterLess behavior.
 
 ## Contributing to greater_less
  
@@ -138,6 +139,4 @@ object contains, so that it transparently acts like a Float.
 
 ## Copyright
 
-Copyright (c) 2012 Samuel Esposito. See LICENSE.txt for
-further details.
-
+Copyright (c) 2016 Samuel Esposito, Jorn van de Beek. See LICENSE.txt for further details.

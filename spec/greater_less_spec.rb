@@ -7,48 +7,48 @@ describe GreaterLess do
       subject { GreaterLess.new("> 4.5") }
 
       it "should differ from its float value" do
-        (subject == 4.5).should be_false
-        (subject != 4.5).should be_true
-        (4.5 == subject).should be_false
-        (4.5 != subject).should be_true
+        expect(subject == 4.5).to eq false
+        expect(subject != 4.5).to eq true
+        expect(4.5 == subject).to eq false
+        expect(4.5 != subject).to eq true
       end
 
       it "should be greater than its float value" do
-        (subject >  4.5).should be_true
-        (subject >= 4.5).should be_true
-        (4.5 <  subject).should be_true
-        (4.5 <= subject).should be_true
+        expect(subject >  4.5).to eq true
+        expect(subject >= 4.5).to eq true
+        expect(4.5 <  subject).to eq true
+        expect(4.5 <= subject).to eq true
       end
 
       it "should be greater than any value that is less than its float value" do
-        (subject >  4.49).should be_true
-        (subject >= 4.49).should be_true
-        (4.49 <  subject).should be_true
-        (4.49 <= subject).should be_true
+        expect(subject >  4.49).to eq true
+        expect(subject >= 4.49).to eq true
+        expect(4.49 <  subject).to eq true
+        expect(4.49 <= subject).to eq true
       end
 
       it "should not be greater than a value greater than its float value" do
-        (subject >  4.51).should be_false
-        (subject >= 4.51).should be_false
-        (4.51 <  subject).should be_false
-        (4.51 <= subject).should be_false
+        expect(subject >  4.51).to eq false
+        expect(subject >= 4.51).to eq false
+        expect(4.51 <  subject).to eq false
+        expect(4.51 <= subject).to eq false
       end
 
       it "should not be less than a value that is greater than its float value" do
-        (subject <  4.51).should be_false
-        (subject <= 4.51).should be_false
-        (4.51 >  subject).should be_false
-        (4.51 >= subject).should be_false
+        expect(subject <  4.51).to eq false
+        expect(subject <= 4.51).to eq false
+        expect(4.51 >  subject).to eq false
+        expect(4.51 >= subject).to eq false
       end
 
       it "should be greater than a GreaterLess object that has a smaller or equal value and a less sign" do
-        (subject > GreaterLess.new("< 4.49")).should be_true
-        (subject > GreaterLess.new("< 4.5") ).should be_true
+        expect(subject > GreaterLess.new("< 4.49")).to eq true
+        expect(subject > GreaterLess.new("< 4.5") ).to eq true
       end
 
       it "should not be greater than a GreaterLess object that has a bigger value or a greater sign" do
-        (subject > GreaterLess.new("< 4.51")).should be_false
-        (subject > GreaterLess.new("> 4.49")).should be_false
+        expect(subject > GreaterLess.new("< 4.51")).to eq false
+        expect(subject > GreaterLess.new("> 4.49")).to eq false
       end
     end
 
@@ -56,38 +56,38 @@ describe GreaterLess do
       subject { GreaterLess.new("<4.5") }
 
       it "should differ from its float value" do
-        (subject == 4.5).should be_false
-        (subject != 4.5).should be_true
-        (4.5 == subject).should be_false
-        (4.5 != subject).should be_true
+        expect(subject == 4.5).to eq false
+        expect(subject != 4.5).to eq true
+        expect(4.5 == subject).to eq false
+        expect(4.5 != subject).to eq true
       end
 
       it "should be less than its float value" do
-        (subject <  4.5).should be_true
-        (subject <= 4.5).should be_true
-        (4.5 >  subject).should be_true
-        (4.5 >= subject).should be_true
+        expect(subject <  4.5).to eq true
+        expect(subject <= 4.5).to eq true
+        expect(4.5 >  subject).to eq true
+        expect(4.5 >= subject).to eq true
       end
 
       it "should be less than any value that is greater than its float value" do
-        (subject <  4.51).should be_true
-        (subject <= 4.51).should be_true
-        (4.51 >  subject).should be_true
-        (4.51 >= subject).should be_true
+        expect(subject <  4.51).to eq true
+        expect(subject <= 4.51).to eq true
+        expect(4.51 >  subject).to eq true
+        expect(4.51 >= subject).to eq true
       end
 
       it "should not be less than a value less than its float value" do
-        (subject <  4.49).should be_false
-        (subject <= 4.49).should be_false
-        (4.49 >  subject).should be_false
-        (4.49 >= subject).should be_false
+        expect(subject <  4.49).to eq false
+        expect(subject <= 4.49).to eq false
+        expect(4.49 >  subject).to eq false
+        expect(4.49 >= subject).to eq false
       end
 
       it "should not be greater than a value that is less than its float value" do
-        (subject >  4.49).should be_false
-        (subject >= 4.49).should be_false
-        (4.49 <  subject).should be_false
-        (4.49 <= subject).should be_false
+        expect(subject >  4.49).to eq false
+        expect(subject >= 4.49).to eq false
+        expect(4.49 <  subject).to eq false
+        expect(4.49 <= subject).to eq false
       end
     end
 
@@ -95,7 +95,7 @@ describe GreaterLess do
       subject { GreaterLess.new("4.5") }
 
       it "should be a float" do
-        subject.class.should == Float
+        expect(subject.class).to eq Float
       end
     end
   end
@@ -103,7 +103,7 @@ describe GreaterLess do
   describe ".initialize" do
     context "when it receives something different from a string or a numeric" do
       it "should raise an exception" do
-        expect { GreaterLess.new(Object.new, true) }.to raise_error
+        expect { GreaterLess.new(Object.new, true) }.to raise_error('Can\'t handle Object!')
       end
     end
   end
@@ -112,173 +112,207 @@ describe GreaterLess do
     subject { GreaterLess.new(">4.5") }
 
     it "should be a float" do
-      subject.should be_a(Float)
+      expect(subject).to be_a(Float)
     end
 
     it "should equal itself" do
-      (subject == subject).should be_true
+      expect(subject == subject).to eq true
     end
 
     describe "#coerce" do
       it "should raise an exception if it is called on a GreaterLess object" do
-        expect { subject.coerce(GreaterLess.new("<2.45")) }.to raise_error
+        expect { subject.coerce(GreaterLess.new("<2.45")) }.to raise_error('Can\'t handle GreaterLess!')
       end
     end
 
     describe "#inverted_sign" do
       it "should return a less sign when the object's sign is a greater sign" do
-        GreaterLess.new("> 1").inverted_sign.should eq("<")
+        expect(GreaterLess.new("> 1").inverted_sign).to eq("<")
       end
 
       it "should return a greater sign when the object's sign is a less sign" do
-        GreaterLess.new("< 1").inverted_sign.should eq(">")
+        expect(GreaterLess.new("< 1").inverted_sign).to eq(">")
       end
     end
 
     describe "#*" do
       it "should return a GreaterLess object" do
-        (subject * 4).class.should == GreaterLess
-        (4 * subject).class.should == GreaterLess
+        expect((subject * 4).class).to eq GreaterLess
+        expect((4 * subject).class).to eq GreaterLess
       end
 
       it "should carry out multiplication on its float value" do
-        (subject * 4).value.should == 18
-        (4 * subject).value.should == 18
+        expect((subject * 4).value).to eq 18
+        expect((4 * subject).value).to eq 18
       end
 
       it "should retain the object's sign when the argument is a positive numeric" do
-        (subject * 4).sign.should == subject.sign
-        (4 * subject).sign.should == subject.sign
+        expect((subject * 4).sign).to eq subject.sign
+        expect((4 * subject).sign).to eq subject.sign
       end
 
       it "should invert the object's sign when the argument is a negative numeric" do
-        (subject * -4).sign.should == subject.inverted_sign
-        (-4 * subject).sign.should == subject.inverted_sign
+        expect((subject * -4).sign).to eq subject.inverted_sign
+        expect((-4 * subject).sign).to eq subject.inverted_sign
       end
 
       it "should raise an exception when the argument is a GreaterLess object" do
-        expect { subject * GreaterLess.new("<1.2") }.to raise_error
+        expect { subject * GreaterLess.new("<1.2") }.to raise_error('Can\'t handle GreaterLess!')
       end
     end
 
     describe "#/" do
       it "should return a GreaterLess object" do
-        (subject / 4).class.should == GreaterLess
-        (4 / subject).class.should == GreaterLess
+        expect((subject / 4).class).to eq GreaterLess
+        expect((4 / subject).class).to eq GreaterLess
       end
 
       it "should carry out division on its float value" do
-        (subject / 4).value.should == 4.5 / 4
-        (4 / subject).value.to_s.should == (4 / 4.5).to_s
+        expect((subject / 4).value).to eq 4.5 / 4
+        expect((4 / subject).value.to_s).to eq (4 / 4.5).to_s
       end
 
       it "should retain the object's sign when the denominator is a positive numeric" do
-        (subject / 4).sign.should == subject.sign
+        expect((subject / 4).sign).to eq subject.sign
       end
 
       it "should retain the object's sign when the numerator is a negative numeric" do
-        (-4 / subject).sign.should == subject.sign
+        expect((-4 / subject).sign).to eq subject.sign
       end
 
       it "should invert the object's sign when the object itself is the denominator" do
-        (4 / subject).sign.should == subject.inverted_sign
+        expect((4 / subject).sign).to eq subject.inverted_sign
       end
 
       it "should invert the object's sign when the denominator is a negative numeric" do
-        (subject / -4).sign.should == subject.inverted_sign
+        expect((subject / -4).sign).to eq subject.inverted_sign
       end
 
       it "should raise an exception when the argument is a GreaterLess object" do
-        expect { subject / GreaterLess.new("<1.2") }.to raise_error
+        expect { subject / GreaterLess.new("<1.2") }.to raise_error('Can\'t handle GreaterLess!')
       end
     end
 
     describe "#+" do
       it "should return a GreaterLess object" do
-        (subject + 4).class.should == GreaterLess
-        (4 + subject).class.should == GreaterLess
+        expect((subject + 4).class).to eq GreaterLess
+        expect((4 + subject).class).to eq GreaterLess
       end
 
       it "should carry out addition on its float value" do
-        (subject + 4).value.should == 8.5
-        (4 + subject).value.should == 8.5
+        expect((subject + 4).value).to eq 8.5
+        expect((4 + subject).value).to eq 8.5
       end
 
       it "should retain the object's sign" do
-        (subject + 4).sign.should == subject.sign
-        (4 + subject).sign.should == subject.sign
+        expect((subject + 4).sign).to eq subject.sign
+        expect((4 + subject).sign).to eq subject.sign
       end
 
       it "should raise an exception when the argument is a GreaterLess object" do
-        expect { subject + GreaterLess.new("<1.2") }.to raise_error
+        expect { subject + GreaterLess.new("<1.2") }.to raise_error('Can\'t handle GreaterLess!')
       end
     end
 
     describe "#-" do
       it "should return a GreaterLess object" do
-        (subject - 4).class.should == GreaterLess
-        (4 - subject).class.should == GreaterLess
+        expect((subject - 4).class).to eq GreaterLess
+        expect((4 - subject).class).to eq GreaterLess
       end
 
       it "should carry out subtraction on its float value" do
-        (subject - 4).value.should == 0.5
-        (4 - subject).value.should == -0.5
+        expect((subject - 4).value).to eq 0.5
+        expect((4 - subject).value).to eq -0.5
       end
 
       it "should retain the object's sign when a numerical is subtracted from it" do
-        (subject - 4).sign.should == subject.sign
+        expect((subject - 4).sign).to eq subject.sign
       end
 
       it "should invert the object's sign when it is subtracted form a numerical" do
-        (4 - subject).sign.should == subject.inverted_sign
+        expect((4 - subject).sign).to eq subject.inverted_sign
       end
 
       it "should raise an exception when the argument is a GreaterLess object" do
-        expect { subject - GreaterLess.new("<1.2") }.to raise_error
+        expect { subject - GreaterLess.new("<1.2") }.to raise_error('Can\'t handle GreaterLess!')
       end
     end
 
     describe "#-@" do
       it "should return a GreaterLess object" do
-        (-subject).class.should == GreaterLess
+        expect((-subject).class).to eq GreaterLess
       end
 
       it "should negate the object's value" do
-        (-subject).value.should == -subject.value
+        expect((-subject).value).to eq -subject.value
       end
 
       it "should invert the object's sign" do
-        (-subject).sign.should == subject.inverted_sign
+        expect((-subject).sign).to eq subject.inverted_sign
       end
     end
 
     describe "#to_f" do
       it "should return the object itself" do
-        subject.to_f.class.should == GreaterLess
+        expect(subject.to_f.class).to eq GreaterLess
       end
     end
 
     describe "#to_s" do
       it "should include this sign" do
-        subject.to_s.should == "> 4.5"
+        expect(subject.to_s).to eq "> 4.5"
       end
     end
 
     describe "#inspect" do
       it "should include this sign" do
-        subject.inspect.should == "> 4.5"
+        expect(subject.inspect).to eq "> 4.5"
       end
     end
 
-    describe "#is_a?" do
+    describe "#is_a? #kind_of?" do
       it "should acknowledge the GreaterLess class" do
-        subject.is_a?(GreaterLess).should be_true
+        expect(subject.is_a? GreaterLess).to eq true
+        expect(subject.kind_of? GreaterLess).to eq true
+        # be_a actually calls kind_of instead of is_a
+        expect(subject).to be_a(GreaterLess)
       end
 
       it "should acknowledge the Float class" do
-        subject.is_a?(Float).should be_true
+        expect(subject.is_a? Float).to eq true
+        expect(subject.kind_of? Float).to eq true
+        # be_a actually calls kind_of instead of is_a
+        expect(subject).to be_a(Float)
+      end
+    end
+
+    describe 'delegation' do
+      subject { GreaterLess.new('>4.5') }
+      it 'passes unknown methods on to the underlying float' do
+        # having methods like round and abs be handled on the original float is very error prone
+        # so we document this 'feature' here and warn people in the Readme
+        expect(subject.round).to eq 5
+      end
+
+      it 'preserves blocks' do
+        success = false
+        subject.tap do success = true end
+        expect(success).to eq true
+      end
+
+      it 'preserves blocks that also have arguments' do
+        steps = []
+        subject.step(7.5) do |i|
+          steps << i
+        end
+        expect(steps).to eq [4.5, 5.5, 6.5, 7.5]
+      end
+
+      it 'does not break andand' do
+        expect(subject.andand).to be_a(GreaterLess)
+        expect(subject.andand).to eq(subject)
+        expect(subject.andand.to_s).to eq('> 4.5')
       end
     end
   end
-
 end

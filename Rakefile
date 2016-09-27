@@ -16,12 +16,12 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "greater_less"
-  gem.homepage = "http://github.com/esposito/greater_less"
+  gem.homepage = "http://github.com/roqua/greater_less"
   gem.license = "MIT"
   gem.summary = %Q{Gem for handling floating point half-open intervals}
   gem.description = %Q{The GreaterLess Gem allows for making comparisons between floats and half-open intervals and apply simple arithmetics to the intervals preserving their mathematical meaning.}
-  gem.email = "s.esposito@roqua.nl"
-  gem.authors = ["Samuel Esposito"]
+  gem.email = "support@roqua.nl"
+  gem.authors = ["Samuel Esposito", "Jorn van de Beek"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
