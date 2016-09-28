@@ -4,6 +4,7 @@ Gem::Specification.new do |s|
   s.name = "greater_less"
   s.version = "1.0.0"
 
+  s.required_ruby_version = '>= 2.2.0'
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Samuel Esposito", "Jorn van de Beek"]
   s.date = Date.today.to_s
