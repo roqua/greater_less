@@ -91,7 +91,7 @@
 require 'delegate'
 
 class GreaterLess < Delegator
-  GREATER_LESS = /^[<>] ?/
+  GREATER_LESS = /\A\s*[<>] ?/
 
   #:nodoc:
   class << self
@@ -104,16 +104,27 @@ class GreaterLess < Delegator
         content.to_f
       end
     end
+
+    def parse(content)
+      # split the string on the rightmost [<>], if it is not a string, raising nomethod is fine
+      part_before_sign, _sign, part_after_sign = content.rpartition(GREATER_LESS)
+      # we expect the [<>] to be the start of the string
+      raise ArgumentError("invalid value for GreaterLess.parse: #{content.inspect}") unless part_before_sign == ''
+      # raises if the part after sign is not numeric
+      Float(part_after_sign)
+      # checks passed, should always be numeric possibly prepended with a [<>]
+      new(content)
+    end
   end
 
   def initialize(content)
     if content.is_a? String
-      if content =~ /^>/
+      if content =~ /\A\s*>/
         @sign = ">"
-      elsif content =~ /^</
+      elsif content =~ /\A\s*</
         @sign = "<"
       end
-      @float = content.gsub(/^[<>] ?/, "").to_f
+      @float = content.gsub(GREATER_LESS, "").to_f
     elsif content.is_a? Numeric
       @float = content.to_f
     else

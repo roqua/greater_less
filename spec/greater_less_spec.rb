@@ -315,4 +315,36 @@ describe GreaterLess do
       end
     end
   end
+  describe '.parse' do
+    context 'float string with sign' do
+      subject { GreaterLess.parse(' > 4.5') }
+      it 'returns a GreaterLess object' do
+        expect(subject).to eq(GreaterLess.new('> 4.5'))
+      end
+    end
+    context 'float string with sign and cruft' do
+      subject { GreaterLess.parse('> 4.5 oid') }
+      it 'raises ArgumentError' do
+        expect{subject}.to raise_exception(ArgumentError)
+      end
+    end
+    context 'non float string' do
+      subject { GreaterLess.parse('something') }
+      it 'raises ArgumentError' do
+        expect{subject}.to raise_exception(ArgumentError)
+      end
+    end
+    context 'float string' do
+      subject { GreaterLess.parse('4.5') }
+      it 'returns a GreaterLess object' do
+        expect(subject).to eq(GreaterLess.new('4.5'))
+      end
+    end
+    context 'float string with cruft' do
+      subject { GreaterLess.parse('4.5 oid') }
+      it 'raises ArgumentError' do
+        expect{subject}.to raise_exception(ArgumentError)
+      end
+    end
+  end
 end
